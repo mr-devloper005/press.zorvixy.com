@@ -1,10 +1,35 @@
 import Link from 'next/link'
 import { Radio, Mail, Globe } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/site-config'
+import { fetchTaskPosts } from '@/lib/task-data'
+import { CATEGORY_OPTIONS, normalizeCategory } from '@/lib/categories'
 
 export const FOOTER_OVERRIDE_ENABLED = true
 
-export function FooterOverride() {
+
+const getCategoryLabel = (value: string) => {
+  const normalized = normalizeCategory(value)
+  return CATEGORY_OPTIONS.find((item) => item.slug === normalized)?.name || value
+}
+
+
+export async function FooterOverride() {
+  const posts = await fetchTaskPosts('mediaDistribution', 200, { allowMockFallback: false })
+  const categories = Array.from(
+    new Map(
+      posts
+        .map((post) => {
+          const content = post.content && typeof post.content === 'object' ? (post.content as Record<string, unknown>) : {}
+          const raw = typeof content.category === 'string' ? content.category.trim() : ''
+          if (!raw) return null
+          const slug = normalizeCategory(raw)
+          return { slug, name: getCategoryLabel(raw) }
+        })
+        .filter((item): item is { slug: string; name: string } => Boolean(item))
+        .map((item) => [item.slug, item])
+    ).values()
+  ).slice(0, 8)
+
   const year = new Date().getFullYear()
   const primaryTask = SITE_CONFIG.tasks.find((t) => t.key === 'mediaDistribution') || SITE_CONFIG.tasks[0]
 
