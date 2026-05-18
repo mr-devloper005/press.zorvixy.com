@@ -1,70 +1,119 @@
 import Link from 'next/link'
-import { Megaphone, Sparkles, Target } from 'lucide-react'
+import { Target, Radio, ArrowRight } from 'lucide-react'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
 import { REGISTER_PAGE_OVERRIDE_ENABLED, RegisterPageOverride } from '@/overrides/register-page'
-
-function getRegisterTheme() {
-  return {
-    shell: 'press-shell text-[#2f1732]',
-    panel: 'border border-[#efd2e4] bg-white shadow-[0_20px_45px_rgba(100,13,95,0.1)]',
-    side: 'border border-[#f0c8b6] bg-[linear-gradient(140deg,#640D5F,#D91656)] text-white shadow-[0_20px_45px_rgba(100,13,95,0.18)]',
-    input: 'border border-[#ecd3e6] bg-[#fffdf8] text-[#412245] placeholder:text-[#9f6c96]',
-    muted: 'text-[#f8dff6]',
-    formMuted: 'text-[#6d4f71]',
-    action:
-      'bg-[linear-gradient(120deg,#EB5B00,#D91656)] text-white hover:brightness-105 shadow-[0_12px_28px_rgba(217,22,86,0.24)]',
-    title: 'Create your press media account',
-    body: 'Set up your workspace to publish releases, manage campaigns, and grow media reach.',
-  }
-}
 
 export default function RegisterPage() {
   if (REGISTER_PAGE_OVERRIDE_ENABLED) {
     return <RegisterPageOverride />
   }
 
-  const config = getRegisterTheme()
-
   return (
-    <div className={`min-h-screen ${config.shell}`}>
+    <div className="min-h-screen bg-[#FFF8F5] text-[#2A0A1F]">
       <NavbarShell />
       <main className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <section className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
-          <div className={`rounded-[2rem] p-8 ${config.side}`}>
-            <Megaphone className="h-8 w-8" />
-            <h1 className="mt-5 text-4xl font-semibold tracking-[-0.05em]">{config.title}</h1>
-            <p className={`mt-5 text-sm leading-8 ${config.muted}`}>{config.body}</p>
-            <div className="mt-8 grid gap-4">
-              {['Launch campaigns with category-ready publishing', 'Track performance from your first release', 'Collaborate with team members across announcements'].map((item) => (
-                <div key={item} className="rounded-[1.5rem] border border-white/20 bg-white/10 px-4 py-4 text-sm">{item}</div>
-              ))}
+
+          {/* ── Left panel — brand gradient ── */}
+          <div
+            style={{ background: 'linear-gradient(140deg, #79155B 0%, #C23373 60%, #F6635C 100%)' }}
+            className="relative overflow-hidden rounded-[2rem] p-8 text-white shadow-[0_24px_56px_rgba(121,21,91,0.28)]"
+          >
+            {/* Decorative blobs */}
+            <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/8 blur-[60px]" />
+            <div className="pointer-events-none absolute -bottom-12 -left-12 h-44 w-44 rounded-full bg-[#FFBA86]/15 blur-[50px]" />
+
+            <div className="relative">
+              <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 text-white">
+                <Radio className="h-6 w-6" />
+              </div>
+              <h1 className="mt-6 text-3xl font-black leading-tight tracking-[-0.03em]">
+                Create your press release account
+              </h1>
+              <p className="mt-4 text-sm leading-7 text-white/75">
+                Set up your workspace to publish releases, manage campaigns, and grow media reach.
+              </p>
+              <div className="mt-8 space-y-3">
+                {[
+                  'Launch campaigns with category-ready publishing',
+                  'Track performance from your first release',
+                  'Collaborate with team members across announcements',
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 px-4 py-3.5 text-sm">
+                    <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#FFBA86]/30 text-[#FFBA86]">✓</span>
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className={`rounded-[2rem] p-8 ${config.panel}`}>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#8a5685]">Create account</p>
-            <form className="mt-6 grid gap-4">
-              <input className={`h-12 rounded-xl px-4 text-sm outline-none focus:border-[#d91656] ${config.input}`} placeholder="Full name" />
-              <input className={`h-12 rounded-xl px-4 text-sm outline-none focus:border-[#d91656] ${config.input}`} placeholder="Email address" />
-              <input className={`h-12 rounded-xl px-4 text-sm outline-none focus:border-[#d91656] ${config.input}`} placeholder="Password" type="password" />
-              <input className={`h-12 rounded-xl px-4 text-sm outline-none focus:border-[#d91656] ${config.input}`} placeholder="What are you creating or publishing?" />
-              <button type="submit" className={`inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-semibold ${config.action}`}>Create account</button>
+          {/* ── Right panel — form ── */}
+          <div className="rounded-[2rem] border border-[#F2C8DC] bg-white p-8 shadow-[0_20px_48px_rgba(121,21,91,0.09)]">
+            {/* Header */}
+            <div className="mb-7">
+              <span className="text-xs font-black uppercase tracking-[0.24em] text-[#C23373]">Create account</span>
+              <h2 className="mt-2 text-2xl font-black text-[#2A0A1F]">Start publishing today</h2>
+              <p className="mt-1 text-sm text-[#8B4A6B]">Fill in your details to get started.</p>
+            </div>
+
+            <form className="grid gap-4">
+              <div>
+                <label className="mb-1.5 block text-xs font-bold text-[#5A2040]">Full name</label>
+                <input
+                  className="h-12 w-full rounded-xl border border-[#F2C8DC] bg-[#FFF8F5] px-4 text-sm text-[#2A0A1F] placeholder:text-[#C4A0B4] outline-none transition focus:border-[#C23373] focus:ring-2 focus:ring-[#C23373]/15"
+                  placeholder="Jane Smith"
+                />
+              </div>
+              <div>
+                <label className="mb-1.5 block text-xs font-bold text-[#5A2040]">Email address</label>
+                <input
+                  className="h-12 w-full rounded-xl border border-[#F2C8DC] bg-[#FFF8F5] px-4 text-sm text-[#2A0A1F] placeholder:text-[#C4A0B4] outline-none transition focus:border-[#C23373] focus:ring-2 focus:ring-[#C23373]/15"
+                  placeholder="you@example.com"
+                  type="email"
+                />
+              </div>
+              <div>
+                <label className="mb-1.5 block text-xs font-bold text-[#5A2040]">Password</label>
+                <input
+                  className="h-12 w-full rounded-xl border border-[#F2C8DC] bg-[#FFF8F5] px-4 text-sm text-[#2A0A1F] placeholder:text-[#C4A0B4] outline-none transition focus:border-[#C23373] focus:ring-2 focus:ring-[#C23373]/15"
+                  placeholder="••••••••"
+                  type="password"
+                />
+              </div>
+              <div>
+                <label className="mb-1.5 block text-xs font-bold text-[#5A2040]">What are you publishing?</label>
+                <input
+                  className="h-12 w-full rounded-xl border border-[#F2C8DC] bg-[#FFF8F5] px-4 text-sm text-[#2A0A1F] placeholder:text-[#C4A0B4] outline-none transition focus:border-[#C23373] focus:ring-2 focus:ring-[#C23373]/15"
+                  placeholder="Product launches, company news…"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[linear-gradient(120deg,#79155B,#C23373)] px-6 text-sm font-bold text-white shadow-[0_10px_28px_rgba(121,21,91,0.3)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_36px_rgba(194,51,115,0.4)]"
+              >
+                Create account
+                <ArrowRight className="h-4 w-4" />
+              </button>
             </form>
-            <div className={`mt-6 flex items-center justify-between text-sm ${config.formMuted}`}>
+
+            <div className="mt-5 flex items-center justify-between text-sm text-[#8B4A6B]">
               <span>Already have an account?</span>
-              <Link href="/login" className="inline-flex items-center gap-2 font-semibold hover:underline">
-                <Sparkles className="h-4 w-4" />
-                Sign in
+              <Link href="/login" className="font-bold text-[#79155B] hover:text-[#C23373] transition">
+                Sign in →
               </Link>
             </div>
-            <div className="mt-6 rounded-xl border border-[#efd6e8] bg-[#fff8ec] px-4 py-3 text-sm text-[#5f3c60]">
-              <span className="inline-flex items-center gap-2 font-medium">
-                <Target className="h-4 w-4 text-[#eb5b00]" />
+
+            <div className="mt-6 flex items-start gap-3 rounded-2xl border border-[#F2C8DC] bg-[#FFF8F5] px-4 py-3.5">
+              <Target className="mt-0.5 h-4 w-4 shrink-0 text-[#F6635C]" />
+              <p className="text-xs leading-5 text-[#5A2040]">
                 Get started with your first media distribution campaign.
-              </span>
+              </p>
             </div>
           </div>
+
         </section>
       </main>
       <Footer />

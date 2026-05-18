@@ -1,62 +1,85 @@
 import Link from 'next/link'
+import { Radio, Mail, Globe } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/site-config'
 
 export const FOOTER_OVERRIDE_ENABLED = true
 
 export function FooterOverride() {
   const year = new Date().getFullYear()
-  const primaryTask = SITE_CONFIG.tasks.find((task) => task.key === 'mediaDistribution') || SITE_CONFIG.tasks[0]
+  const primaryTask = SITE_CONFIG.tasks.find((t) => t.key === 'mediaDistribution') || SITE_CONFIG.tasks[0]
 
   return (
-    <footer className="mt-20 border-t border-[#f0c8b6] bg-[linear-gradient(180deg,#fff7ed_0%,#fff2f6_100%)]">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
+    <footer className="border-t border-[#F2C8DC] bg-[linear-gradient(180deg,#FFF8F5_0%,#FFF0F7_100%)]">
+      {/* Top gradient accent */}
+      <div className="h-[3px] bg-[linear-gradient(90deg,#79155B,#C23373,#F6635C,#FFBA86)]" />
+
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+
+          {/* Brand column */}
           <div>
-            <div className="inline-flex items-center gap-3">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#640D5F,#D91656)] text-xs font-black text-white">
-                PN
+            <Link href="/" className="inline-flex items-center gap-3 group">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#79155B,#C23373)] text-sm font-black text-white shadow-[0_6px_18px_rgba(121,21,91,0.28)]">
+                PZ
               </span>
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#640D5F]">pressnbcnews.com</p>
-                <p className="text-xs text-[#8a5a81]">Media press media platform</p>
+                <p className="text-sm font-bold uppercase tracking-[0.12em] text-[#79155B]">press.zorvixy.com</p>
+                <p className="text-xs text-[#C23373]">Media press release platform</p>
               </div>
-            </div>
-            <p className="mt-5 max-w-md text-sm leading-7 text-[#5f3c60]">
-              Publish releases, increase media reach, and keep your newsroom discoverable with a clean, performance-focused interface.
+            </Link>
+            <p className="mt-5 max-w-xs text-sm leading-7 text-[#5A2040]">
+              Publish editorial-quality press releases, amplify media reach, and keep your newsroom discoverable — all from one modern platform.
             </p>
-            {primaryTask ? (
+
+            {primaryTask && (
               <Link
                 href={primaryTask.route}
-                className="mt-6 inline-flex rounded-full bg-[linear-gradient(120deg,#EB5B00,#D91656)] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(217,22,86,0.2)] transition hover:-translate-y-0.5"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[linear-gradient(120deg,#79155B,#C23373)] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_22px_rgba(194,51,115,0.28)] transition hover:-translate-y-0.5"
               >
-                Explore Latest News
+                <Radio className="h-3.5 w-3.5" />
+                Latest Releases
               </Link>
-            ) : null}
+            )}
           </div>
 
+          {/* Platform */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-[#640D5F]">Company</h3>
-            <div className="mt-4 space-y-3 text-sm text-[#5f3c60]">
-              <Link href="/about" className="block hover:text-[#d91656]">About Us</Link>
-              <Link href="/contact" className="block hover:text-[#d91656]">Contact</Link>
-              <Link href="/updates" className="block hover:text-[#d91656]">Latest News</Link>
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#79155B]">Platform</h3>
+            <div className="mt-4 space-y-3 text-sm">
+              <Link href="/directory-press" className="block text-[#5A2040] hover:text-[#C23373] transition">Press Releases</Link>
+              <Link href="/register" className="block text-[#5A2040] hover:text-[#C23373] transition">Submit a Release</Link>
+              <Link href="/search" className="block text-[#5A2040] hover:text-[#C23373] transition">Search</Link>
             </div>
           </div>
 
+          {/* Company */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-[#640D5F]">Legal & Support</h3>
-            <div className="mt-4 space-y-3 text-sm text-[#5f3c60]">
-              <Link href="/privacy" className="block hover:text-[#d91656]">Privacy Policy</Link>
-              <Link href="/terms" className="block hover:text-[#d91656]">Terms of Service</Link>
-              <Link href="/cookies" className="block hover:text-[#d91656]">Cookies</Link>
-              <Link href="/help" className="block hover:text-[#d91656]">Help Center</Link>
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#79155B]">Company</h3>
+            <div className="mt-4 space-y-3 text-sm">
+              <Link href="/about" className="block text-[#5A2040] hover:text-[#C23373] transition">About Us</Link>
+              <Link href="/contact" className="block text-[#5A2040] hover:text-[#C23373] transition">Contact</Link>
+            </div>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#79155B]">Legal & Support</h3>
+            <div className="mt-4 space-y-3 text-sm">
+              <Link href="/privacy" className="block text-[#5A2040] hover:text-[#C23373] transition">Privacy Policy</Link>
+              <Link href="/terms" className="block text-[#5A2040] hover:text-[#C23373] transition">Terms of Service</Link>
+              <Link href="/cookies" className="block text-[#5A2040] hover:text-[#C23373] transition">Cookie Policy</Link>
+              <Link href="/help" className="block text-[#5A2040] hover:text-[#C23373] transition">Help Center</Link>
             </div>
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-[#f0c8b6] pt-6 text-xs text-[#7b5778] sm:flex-row sm:items-center sm:justify-between">
+        {/* Bottom bar */}
+        <div className="mt-12 flex flex-col gap-3 border-t border-[#F2C8DC] pt-6 text-xs text-[#8B4A6B] sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {year} {SITE_CONFIG.name}. All rights reserved.</p>
-          <p>Built for media publishing and press media distribution.</p>
+          <p className="flex items-center gap-1.5">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#F6635C]" />
+            Built for modern media publishing and press release distribution.
+          </p>
         </div>
       </div>
     </footer>
