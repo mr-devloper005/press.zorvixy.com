@@ -8,39 +8,39 @@ export const siteContent = {
     tagline: 'Distribution, visibility, and newsroom credibility',
   },
   hero: {
-    badge: 'Press distribution',
-    title: ['Publish, distribute, and track press media that get noticed.'],
+    badge: 'Live Media Release Network',
+    title: ['Amplify every announcement', 'with trusted press distribution.'],
     description:
-      'PressNBCNews helps teams publish editorial-quality releases, place stories across media channels, and monitor campaign visibility from one workflow.',
+      'Press Zorvixy helps teams publish editorial-quality releases, reach journalists across 120+ channels, and monitor campaign performance from one modern workflow.',
     primaryCta: {
-      label: 'Browse latest releases',
+      label: 'Browse Releases',
       href: '/directory-press',
     },
     secondaryCta: {
-      label: 'View pricing',
-      href: '/pricing',
+      label: 'Submit a Release',
+      href: '/register',
     },
-    searchPlaceholder: 'Search release topics',
+    searchPlaceholder: 'Search press releases…',
     focusLabel: 'Featured',
-    featureCardBadge: 'launch note',
-    featureCardTitle: 'Launch campaigns with newsroom-ready formatting and faster distribution.',
+    featureCardBadge: 'Newsroom',
+    featureCardTitle: 'Launch campaigns with editorial-grade formatting and faster distribution.',
     featureCardDescription:
       'Use a modern media workflow to move from draft to publication while keeping every release discoverable and shareable.',
   },
   home: {
     metadata: {
-      title: 'Press media distribution and media newsroom',
+      title: 'Press Release Distribution & Media Newsroom — Press Zorvixy',
       description:
-        'Explore the latest press media, media announcements, and business updates published on PressNBCNews.',
-      openGraphTitle: 'Press media distribution and media newsroom',
+        'Explore the latest press releases, media announcements, and business updates published on Press Zorvixy.',
+      openGraphTitle: 'Press Release Distribution & Media Newsroom',
       openGraphDescription:
-        'A modern media publishing experience for announcements, company updates, and distributed press media.',
-      keywords: ['press media distribution', 'latest news', 'business announcements', 'media outreach'],
+        'A modern media publishing experience for announcements, company updates, and distributed press releases.',
+      keywords: ['press release distribution', 'media newsroom', 'business announcements', 'PR distribution', 'media outreach'],
     },
     introBadge: 'Platform',
     introTitle: 'A media-first workflow for publishing and distribution.',
     introParagraphs: [
-      'PressNBCNews is built for founders, PR teams, and agencies that need to publish releases quickly without sacrificing editorial presentation.',
+      'Press Zorvixy is built for founders, PR teams, and agencies that need to publish releases quickly without sacrificing editorial presentation.',
       'Every release page balances readability, trust signals, and search discoverability so visitors can scan and share updates faster.',
       'The interface keeps publishing workflows straightforward while still looking like a polished SaaS media product.',
     ],
@@ -49,10 +49,10 @@ export const siteContent = {
       'Faster distribution of release content.',
       'Clear analytics and performance visibility.',
       'Scannable newsroom archive and search.',
-      'Trust-first editorial presentation for every article.',
+      'Trust-first editorial presentation for every release.',
     ],
     primaryLink: {
-      label: 'Open latest news',
+      label: 'Browse Latest Releases',
       href: '/directory-press',
     },
     secondaryLink: {
@@ -61,20 +61,20 @@ export const siteContent = {
     },
   },
   cta: {
-    badge: 'Start now',
-    title: 'Choose a press media plan that matches your distribution goals.',
+    badge: 'Get Started',
+    title: 'Choose a press release plan that matches your distribution goals.',
     description:
       'From startup announcements to enterprise campaigns, our platform supports publication, distribution, and reporting in one place.',
     primaryCta: {
-      label: 'Compare pricing',
+      label: 'Compare Pricing',
       href: '/pricing',
     },
     secondaryCta: {
-      label: 'View latest releases',
+      label: 'View Latest Releases',
       href: '/directory-press',
     },
   },
-  taskSectionHeading: 'Latest press media',
+  taskSectionHeading: 'Latest Press Releases',
   taskSectionDescriptionSuffix: 'Read the newest stories from the media desk.',
 } as const
 
